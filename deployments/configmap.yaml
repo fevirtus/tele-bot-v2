@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tele-bot-config
+data:
+  TELEGRAM_TOKEN: "${TELEGRAM_TOKEN}"
+  COLLECTION_USER: "${COLLECTION_USER}"
+  COLLECTION_DEBT: "${COLLECTION_DEBT}"

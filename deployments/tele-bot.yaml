@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tele-bot-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tele-bot
+  template:
+    metadata:
+      labels:
+        app: tele-bot
+    spec:
+      containers:
+        - name: tele-bot
+          image: fevirtus/tele-bot:latest
+          envFrom:
+          - configMapRef:
+              name: tele-bot-config
+          ports:
+            - containerPort: 80

@@ -1,0 +1,11 @@
+[project]
+name = "tele-bot-v2"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "firebase-admin>=6.6.0",
+    "load-dotenv>=0.1.0",
+    "python-telegram-bot>=21.9",
+]
