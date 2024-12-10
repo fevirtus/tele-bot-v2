@@ -1,19 +1,17 @@
-from telegram import User
 from bot.commands.base import BaseCommand
-from bot.firebase_service import user_exists, add_user
+from bot.models.user import User
 
 class StartCommand(BaseCommand):
     async def execute(self):
-        is_exists = user_exists(self.update.message.from_user.id)
-        if is_exists:
+        if User.is_exists(self.firebase_client, self.update.message.from_user.id):
             await self.bot.send_message(
                     chat_id=self.update.message.chat_id,
-                    text="Đăng ký rồi, start cc!",
+                    text="Gọi con cậc!",
                     message_thread_id=self.update.message.message_thread_id
                 )
-            
             return
         
+        # add new user to firestore
         new_user = User(
             id=self.update.message.from_user.id,
             first_name=self.update.message.from_user.first_name,
@@ -22,12 +20,12 @@ class StartCommand(BaseCommand):
             is_bot=self.update.message.from_user.is_bot,
             language_code=self.update.message.from_user.language_code
         )
+        new_user.add(self.firebase_client)
 
-        add_user(new_user)
+        # send welcome message
         await self.bot.send_message(
                 chat_id=self.update.message.chat_id,
-                text=f"Đăng ký xong.\nChào {self.update.message.from_user.first_name}, thử cái gì đó đi",
+                text=f"Nhớ mặt m rồi",
                 message_thread_id=self.update.message.message_thread_id
             )
-        
         return

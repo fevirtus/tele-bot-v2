@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 class Config:
     load_dotenv()
     FIREBASE_CREDENTIALS = os.environ.get("FIREBASE_CREDENTIALS")
+    TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
+    RIOT_API_KEY = os.environ.get("RIOT_API_KEY")
     COLLECTION_DEBT = os.environ.get("COLLECTION_DEBT")
     COLLECTION_USER = os.environ.get("COLLECTION_USER")
-    TELEGRAM_TOKEN = os.environ.get("TELEGRAM_TOKEN")
+    COLLECTION_TFT_USER = os.environ.get("COLLECTION_TFT_USER")

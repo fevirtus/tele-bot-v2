@@ -8,4 +8,5 @@ dependencies = [
     "firebase-admin>=6.6.0",
     "load-dotenv>=0.1.0",
     "python-telegram-bot>=21.9",
+    "riotwatcher>=3.3.0",
 ]

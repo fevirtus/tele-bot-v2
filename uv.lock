@@ -518,6 +518,18 @@ wheels = [
 ]
 
 [[package]]
+name = "riotwatcher"
+version = "3.3.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/46/87/7823759c95ed93f329199f0739b63efd7fc5bfd336c504287f24faecc7ea/riotwatcher-3.3.0.tar.gz", hash = "sha256:bf6c632a301f68122988425ef5bf2aad4b2989d5a66af9b30ac17290f8f22cf3", size = 36660 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/7d/86/e1f4af85633b68773b85bd3eba4256a9fa268c3932b0d54167051256a169/riotwatcher-3.3.0-py3-none-any.whl", hash = "sha256:d35ce6d2a8b49b80f16ba2c6287dfe2ef8f4ba1313e19b30a88af356991a6123", size = 59370 },
+]
+
+[[package]]
 name = "rsa"
 version = "4.9"
 source = { registry = "https://pypi.org/simple" }
@@ -546,6 +558,7 @@ dependencies = [
     { name = "firebase-admin" },
     { name = "load-dotenv" },
     { name = "python-telegram-bot" },
+    { name = "riotwatcher" },
 ]
 
 [package.metadata]
@@ -553,6 +566,7 @@ requires-dist = [
     { name = "firebase-admin", specifier = ">=6.6.0" },
     { name = "load-dotenv", specifier = ">=0.1.0" },
     { name = "python-telegram-bot", specifier = ">=21.9" },
+    { name = "riotwatcher", specifier = ">=3.3.0" },
 ]
 
 [[package]]
