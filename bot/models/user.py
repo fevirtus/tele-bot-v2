@@ -49,6 +49,23 @@ class User:
         })
 
     @staticmethod
+    def get(client: firestore.Client, user_id: int) -> Optional['User']:
+        doc_ref = client.collection(Config.COLLECTION_USER).document(str(user_id))
+        doc = doc_ref.get()
+        if doc.exists:
+            data = doc.to_dict()
+            return User(
+                id=data["id"],
+                first_name=data["first_name"],
+                last_name=data["last_name"],
+                username=data["username"],
+                is_bot=data["is_bot"],
+                language_code=data["language_code"]
+            )
+        else:
+            return None
+
+    @staticmethod
     def is_exists(client: firestore.Client, user_id: int) -> bool:
         doc_ref = client.collection(Config.COLLECTION_USER).document(str(user_id))
         return doc_ref.get().exists

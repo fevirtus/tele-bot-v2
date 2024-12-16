@@ -1,15 +1,21 @@
 from contextvars import Context
 import tracemalloc
-from telegram import BotCommand, InlineKeyboardButton, InlineKeyboardMarkup, Update
+from telegram import BotCommand, Update
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler
 from bot.commands.debt import DebtCommand
 from bot.commands.start import StartCommand
 from bot.commands.tft import TFTCommand
 from bot.commands.tft_ranked import TFTRankedCommand
 from bot.commands.riot import RiotCommand
+from bot.commands.home import HomeCommand
 from bot.config import Config
 from bot.models.inline_button import TFT_RANKED
 
+
+async def home(update: Update, context: Context):
+    if update.message.chat_id == int(Config.HOME_GROUP_ID):
+        command = HomeCommand(update, context)
+        await command.execute()
 
 async def start(update: Update, context: Context):
     command = StartCommand(update, context)
@@ -54,6 +60,7 @@ def main():
 
     application = Application.builder().token(Config.TELEGRAM_TOKEN).post_init(post_init).build()
 
+    application.add_handler(CommandHandler("home", home))
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("debt", debt))
     application.add_handler(CommandHandler("tft", tft))

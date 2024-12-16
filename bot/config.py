@@ -11,3 +11,5 @@ class Config:
     COLLECTION_DEBT = os.environ.get("COLLECTION_DEBT")
     COLLECTION_USER = os.environ.get("COLLECTION_USER")
     COLLECTION_TFT_USER = os.environ.get("COLLECTION_TFT_USER")
+    HOME_GROUP_ID = os.environ.get("HOME_GROUP_ID")
+    HOME_MEMBERS = os.environ.get("HOME_MEMBERS")
